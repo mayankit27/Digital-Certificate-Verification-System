@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Review Query</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <a
+        href="{{ url_for('issuer_queries') }}"
+        class="back-btn">
+
+        ← Back to Queries
+
+    </a>
+
+
+    <div class="issuer-query-detail">
+
+        <div class="query-detail-header">
+
+            <div>
+
+                <span class="certificate-label">
+                    Certificate Query
+                </span>
+
+                <h1>
+                    {{ query.certificate_id }}
+                </h1>
+
+            </div>
+
+
+            {% if query.status == "PENDING" %}
+
+                <span class="status pending">
+                    PENDING
+                </span>
+
+            {% elif query.status == "UNDER REVIEW" %}
+
+                <span class="status review">
+                    UNDER REVIEW
+                </span>
+
+            {% elif query.status == "RESOLVED" %}
+
+                <span class="status valid">
+                    RESOLVED
+                </span>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Student -->
+
+        <div class="query-detail-section">
+
+            <h2>Student Details</h2>
+
+            <p>
+                <strong>Name:</strong>
+                {{ query.student_name }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ query.student_email }}
+            </p>
+
+        </div>
+
+
+        <!-- Certificate -->
+
+        <div class="query-detail-section">
+
+            <h2>Certificate</h2>
+
+            <p>
+                <strong>Certificate ID:</strong>
+                {{ query.certificate_id }}
+            </p>
+
+        </div>
+
+
+        <!-- Student Query -->
+
+        <div class="query-detail-section">
+
+            <h2>Student's Query</h2>
+
+            <div class="student-query-box">
+
+                {{ query.query }}
+
+            </div>
+
+        </div>
+
+
+        <!-- Issuer Response -->
+
+        <div class="query-detail-section">
+
+            <h2>Issuer Response</h2>
+
+            {% if query.response %}
+
+                <div class="response-box">
+
+                    {{ query.response }}
+
+                </div>
+
+            {% else %}
+
+                <p class="no-response">
+                    No response has been submitted yet.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Response Form -->
+
+        {% if query.status != "RESOLVED" %}
+
+        <div class="query-detail-section">
+
+            <h2>Respond to Query</h2>
+
+            <form
+                method="POST"
+                action="{{ url_for(
+                    'respond_to_query',
+                    query_id=query._id
+                ) }}">
+
+                <label for="response">
+                    Response
+                </label>
+
+                <textarea
+                    id="response"
+                    name="response"
+                    rows="6"
+                    placeholder="Enter your response to the student..."
+                    required>{{ query.response if query.response else '' }}</textarea>
+
+
+                <label for="status">
+                    Update Status
+                </label>
+
+                <select
+                    id="status"
+                    name="status">
+
+                    <option
+                        value="UNDER REVIEW"
+                        {% if query.status == "UNDER REVIEW" %}
+                        selected
+                        {% endif %}>
+
+                        Under Review
+
+                    </option>
+
+                    <option
+                        value="RESOLVED"
+                        {% if query.status == "RESOLVED" %}
+                        selected
+                        {% endif %}>
+
+                        Resolved
+
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="submit-query-btn">
+
+                    Save Response
+
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

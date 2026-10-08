@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Student Header -->
+
+    <div class="issuer-header">
+
+        <div>
+
+            <h1>{{ student.name }}</h1>
+
+            <p>
+                Student
+                <br>
+                {{ student.email }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Certificate Section -->
+
+    <div class="section-header">
+
+        <h2>My Certificates</h2>
+
+        <p>
+            Certificates issued in your name
+        </p>
+
+    </div>
+
+
+    <!-- Certificate List -->
+
+    <div class="certificate-list">
+
+        {% if certificates %}
+
+            {% for certificate in certificates %}
+
+            <div class="certificate-card">
+
+                <div class="certificate-top">
+
+                    <div>
+
+                        <span class="certificate-label">
+                            Certificate ID
+                        </span>
+
+                        <h3>
+                            {{ certificate.certificate_id }}
+                        </h3>
+
+                    </div>
+
+
+                    {% if certificate.status == "VALID" %}
+
+                        <span class="status">
+                            {{ certificate.status }}
+                        </span>
+
+                    {% else %}
+
+                        <span class="status revoked">
+                            {{ certificate.status }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="certificate-info">
+
+                    <p>
+                        <strong>Achievement:</strong>
+                        {{ certificate.achievement }}
+                    </p>
+
+                    <p>
+                        <strong>Competition:</strong>
+                        {{ certificate.competition_name }}
+                    </p>
+
+                    <p>
+                        <strong>Institute:</strong>
+                        {{ certificate.institute_name }}
+                    </p>
+
+                    <p>
+                        <strong>Issued By:</strong>
+                        {{ certificate.issuer_name }}
+                    </p>
+
+                    <p>
+                        <strong>Issue Date:</strong>
+                        {{ certificate.issue_date }}
+                    </p>
+
+                </div>
+
+
+                {% if certificate.query %}
+
+                <div class="certificate-query-status">
+
+                    <div class="query-status-header">
+
+                        <strong>
+                            Query Status
+                        </strong>
+
+
+                        {% if certificate.query.status == "PENDING" %}
+
+                            <span class="status pending">
+                                PENDING
+                            </span>
+
+                        {% elif certificate.query.status == "UNDER REVIEW" %}
+
+                            <span class="status review">
+                                UNDER REVIEW
+                            </span>
+
+                        {% elif certificate.query.status == "RESOLVED" %}
+
+                            <span class="status valid">
+                                RESOLVED
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <p>
+                        {{ certificate.query.query }}
+                    </p>
+
+
+                    {% if certificate.query.response %}
+
+                    <div class="issuer-response">
+
+                        <strong>
+                            Issuer Response
+                        </strong>
+
+                        <p>
+                            {{ certificate.query.response }}
+                        </p>
+
+                        {% if certificate.query.responded_by %}
+
+                        <small>
+
+                            Responded by:
+                            {{ certificate.query.responded_by }}
+
+                        </small>
+
+                        {% endif %}
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+                {% endif %}
+
+                <div class="certificate-actions">
+
+                    <a
+                        href="{{ url_for(
+                            'student_certificate',
+                            certificate_id=certificate.certificate_id
+                        ) }}"
+                        class="view-btn">
+
+                        View Certificate
+
+                    </a>
+
+
+                    <a
+                        href="{{ url_for(
+                            'raise_query',
+                            certificate_id=certificate.certificate_id
+                        ) }}"
+                        class="query-btn">
+
+                        Raise Query
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <h3>No Certificates Found</h3>
+
+                <p>
+                    No certificates have been issued
+                    to your account yet.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+

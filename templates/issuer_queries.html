@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Queries</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="issuer-header">
+
+        <div>
+
+            <h1>{{ issuer.name }}</h1>
+
+            <p>
+                {{ issuer.institute }}
+                <br>
+                {{ issuer.email }}
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('issuer_dashboard') }}"
+            class="back-btn">
+
+            ← Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- Page Heading -->
+
+    <div class="section-header">
+
+        <h2>Student Queries</h2>
+
+        <p>
+            Review and respond to certificate-related queries.
+        </p>
+
+    </div>
+
+
+    <!-- Query List -->
+
+    <div class="query-list">
+
+        {% if queries %}
+
+            {% for query in queries %}
+
+            <div class="issuer-query-card">
+
+                <div class="query-card-top">
+
+                    <div>
+
+                        <span class="certificate-label">
+                            Certificate ID
+                        </span>
+
+                        <h3>
+                            {{ query.certificate_id }}
+                        </h3>
+
+                    </div>
+
+
+                    {% if query.status == "PENDING" %}
+
+                        <span class="status pending">
+                            PENDING
+                        </span>
+
+                    {% elif query.status == "UNDER REVIEW" %}
+
+                        <span class="status review">
+                            UNDER REVIEW
+                        </span>
+
+                    {% elif query.status == "RESOLVED" %}
+
+                        <span class="status valid">
+                            RESOLVED
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="query-card-info">
+
+                    <p>
+                        <strong>Student:</strong>
+                        {{ query.student_name }}
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ query.student_email }}
+                    </p>
+
+                    <p>
+                        <strong>Query:</strong>
+                        {{ query.query }}
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for(
+                        'issuer_query',
+                        query_id=query._id
+                    ) }}"
+                    class="view-btn">
+
+                    View Query
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <h3>No Queries</h3>
+
+                <p>
+                    There are currently no student queries.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Back Button -->
+
+    <a href="{{ url_for('student_dashboard') }}"
+       class="back-btn">
+
+        ← Back to Dashboard
+
+    </a>
+
+
+    <!-- Certificate -->
+
+    <div class="student-certificate-card">
+
+        <div class="certificate-heading">
+
+            <p class="certificate-small-title">
+                DIGITAL CERTIFICATE
+            </p>
+
+            <h1>
+                Certificate of Achievement
+            </h1>
+
+            <p class="certificate-subtitle">
+                This certificate has been officially issued
+                by the institute.
+            </p>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="certificate-status-section">
+
+            <span class="status-label">
+                Verification Status
+            </span>
+
+            {% if certificate.status == "VALID" %}
+
+                <span class="status valid">
+                    ✓ {{ certificate.status }}
+                </span>
+
+            {% elif certificate.status == "REVOKED" %}
+
+                <span class="status revoked">
+                    ✕ {{ certificate.status }}
+                </span>
+
+            {% else %}
+
+                <span class="status pending">
+                    {{ certificate.status }}
+                </span>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Student Information -->
+
+        <div class="certificate-section">
+
+            <h2>Student Details</h2>
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+
+                    <span>Name</span>
+
+                    <strong>
+                        {{ certificate.student_name }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Email</span>
+
+                    <strong>
+                        {{ certificate.student_email }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Mobile</span>
+
+                    <strong>
+                        {{ certificate.mobile }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Achievement -->
+
+        <div class="certificate-section">
+
+            <h2>Achievement Details</h2>
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+
+                    <span>Achievement</span>
+
+                    <strong>
+                        {{ certificate.achievement }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Competition</span>
+
+                    <strong>
+                        {{ certificate.competition_name }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Issuer Details -->
+
+        <div class="certificate-section">
+
+            <h2>Issuer Details</h2>
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+
+                    <span>Institute</span>
+
+                    <strong>
+                        {{ certificate.institute_name }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Issued By</span>
+
+                    <strong>
+                        {{ certificate.issuer_name }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Issuer Email</span>
+
+                    <strong>
+                        {{ certificate.issuer_email }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Issue Date</span>
+
+                    <strong>
+                        {{ certificate.issue_date }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Certificate ID -->
+
+        <div class="certificate-id-section">
+
+            <span>Certificate ID</span>
+
+            <strong>
+                {{ certificate.certificate_id }}
+            </strong>
+
+        </div>
+
+
+
+        <!-- Raise Query -->
+
+        <div class="query-section">
+
+            <h2>Something Wrong?</h2>
+
+            <p>
+                If you find incorrect information or have an
+                issue with this certificate, you can raise a
+                query with the institute.
+            </p>
+
+            <a
+                href="{{ url_for(
+                    'raise_query',
+                    certificate_id=certificate.certificate_id
+                ) }}"
+                class="query-btn">
+
+                Raise a Query
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
+
+

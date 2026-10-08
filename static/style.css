@@ -1,0 +1,968 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.issuer-header {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.issuer-header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.issuer-header p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.create-btn {
+    background: #2563eb;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 13px 20px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.create-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.section-header p {
+    color: #6b7280;
+}
+
+
+/* =========================
+   CERTIFICATE CARD
+========================= */
+
+.certificate-list {
+    display: grid;
+    gap: 18px;
+}
+
+.certificate-card {
+    background: white;
+    padding: 24px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.certificate-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.certificate-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.certificate-top h3 {
+    margin-top: 5px;
+}
+
+.status {
+    background: #dcfce7;
+    color: #166534;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.certificate-info {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.view-btn {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background: #111827;
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 7px;
+}
+
+.empty-state {
+    background: white;
+    text-align: center;
+
+    padding: 60px;
+
+    border-radius: 12px;
+}
+
+.empty-state p {
+    margin-top: 8px;
+    color: #6b7280;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.back-link {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.form-header {
+    margin: 30px 0;
+}
+
+.form-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #6b7280;
+}
+
+.form-section {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.form-section h2 {
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.form-group input[readonly] {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #6b7280;
+
+    margin-bottom: 18px;
+}
+
+.submit-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #2563eb;
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   CERTIFICATE
+========================= */
+
+.certificate-page {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 50px auto;
+
+    text-align: center;
+}
+
+.certificate {
+    background: white;
+
+    padding: 70px 60px;
+
+    border: 8px double #1f2937;
+
+    min-height: 650px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.certificate-type {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #6b7280;
+
+    margin-bottom: 15px;
+}
+
+.certificate h1 {
+    font-size: 36px;
+
+    margin-bottom: 45px;
+}
+
+.presented {
+    color: #6b7280;
+}
+
+.student-name {
+    font-size: 34px;
+
+    margin: 18px 0;
+
+    border-bottom: 1px solid #d1d5db;
+
+    display: inline-block;
+
+    padding: 0 40px 8px;
+}
+
+.certificate h3 {
+    font-size: 22px;
+    margin: 12px 0;
+}
+
+.certificate-details {
+    margin-top: 40px;
+
+    line-height: 1.8;
+
+    color: #4b5563;
+}
+
+.certificate-footer {
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #4b5563;
+}
+
+.back-dashboard {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .issuer-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate {
+        padding: 40px 20px;
+    }
+
+    .certificate h1 {
+        font-size: 28px;
+    }
+
+    .student-name {
+        font-size: 25px;
+    }
+
+}
+
+.status.revoked {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* =========================================
+   Student Certificate Page
+========================================= */
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #374151;
+    font-weight: 600;
+}
+
+.student-certificate-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: auto;
+}
+
+.certificate-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.certificate-small-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6b7280;
+}
+
+.certificate-heading h1 {
+    margin: 8px 0;
+    font-size: 32px;
+}
+
+.certificate-subtitle {
+    color: #6b7280;
+}
+
+
+/* Status */
+
+.certificate-status-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.status-label {
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.status.valid {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status.revoked {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status {
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Sections */
+
+.certificate-section {
+    border-top: 1px solid #e5e7eb;
+    padding: 25px 0;
+}
+
+.certificate-section h2 {
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+
+/* Details */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.detail-item span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.detail-item strong {
+    font-size: 15px;
+    color: #111827;
+}
+
+
+/* Certificate ID */
+
+.certificate-id-section {
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.certificate-id-section span {
+    color: #6b7280;
+}
+
+.certificate-id-section strong {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+
+/* Query */
+
+.query-section {
+    margin-top: 30px;
+    padding: 25px;
+    background: #f9fafb;
+    border-radius: 12px;
+}
+
+.query-section h2 {
+    margin-bottom: 8px;
+}
+
+.query-section p {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.query-btn,
+.submit-query-btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   Raise Query Page
+========================================= */
+
+.query-card {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.query-header {
+    margin-bottom: 25px;
+}
+
+.query-header h1 {
+    margin-bottom: 8px;
+}
+
+.query-header p {
+    color: #6b7280;
+}
+
+.query-certificate-info {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.query-certificate-info p {
+    margin: 8px 0;
+}
+
+.query-card label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.query-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    margin-bottom: 18px;
+}
+
+.submit-query-btn {
+    width: 100%;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .student-certificate-card,
+    .query-card {
+        padding: 25px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate-id-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================
+   Issuer Query Dashboard
+========================================= */
+
+.query-dashboard-btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 8px;
+    background: #374151;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.query-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.issuer-query-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.query-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.query-card-top h3 {
+    margin-top: 6px;
+    font-family: monospace;
+}
+
+.query-card-info {
+    margin: 20px 0;
+}
+
+.query-card-info p {
+    margin: 8px 0;
+    color: #374151;
+}
+
+
+/* =========================================
+   Issuer Query Detail
+========================================= */
+
+.issuer-query-detail {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.query-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.query-detail-header h1 {
+    margin-top: 8px;
+    font-family: monospace;
+}
+
+.query-detail-section {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.query-detail-section h2 {
+    margin-bottom: 15px;
+    font-size: 19px;
+}
+
+.student-query-box,
+.response-box {
+    padding: 18px;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+.student-query-box {
+    background: #fef3c7;
+    color: #78350f;
+}
+
+.response-box {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.no-response {
+    color: #6b7280;
+}
+
+
+/* Form */
+
+.query-detail-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.query-detail-section textarea,
+.query-detail-section select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    margin-bottom: 10px;
+}
+
+.query-detail-section select {
+    background: white;
+}
+
+
+
+/* =========================================
+   Student Login
+========================================= */
+
+.student-login-card {
+    max-width: 450px;
+    margin: 70px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.student-login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.student-login-header h1 {
+    margin-bottom: 8px;
+}
+
+.student-login-header p {
+    color: #6b7280;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #374151;
+}
+
+
+.student-login-submit {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.student-login-submit:hover {
+    opacity: 0.9;
+}
+
+
+.login-error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+.back-to-dashboard {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.student-login-btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+/* =========================================
+   Certificate Actions
+========================================= */
+
+.certificate-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.certificate-actions .view-btn,
+.certificate-actions .query-btn {
+    flex: 1;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   Student Query Status
+========================================= */
+
+.certificate-query-status {
+    margin-top: 20px;
+    padding: 18px;
+    background: #f9fafb;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.query-status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.certificate-query-status > p {
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+
+/* Issuer Response */
+
+.issuer-response {
+    margin-top: 15px;
+    padding: 15px;
+    background: #dcfce7;
+    color: #166534;
+    border-radius: 8px;
+}
+
+.issuer-response p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.issuer-response small {
+    color: #166534;
+    opacity: 0.8;
+}
+
+
+/* Under Review */
+
+.status.review {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .certificate-actions {
+        flex-direction: column;
+    }
+
+}
+
+
+

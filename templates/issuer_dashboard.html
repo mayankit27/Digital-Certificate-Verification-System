@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Issuer Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Issuer Header -->
+
+    <div class="issuer-header">
+
+        <div>
+            <h1>{{ issuer.name }}</h1>
+
+            <p>
+                {{ issuer.institute }}
+                <br>
+                {{ issuer.email }}
+            </p>
+        </div>
+
+        <a href="{{ url_for('create_certificate') }}"
+           class="create-btn">
+            + Create Certificate
+        </a>
+
+        <a
+            href="{{ url_for('issuer_queries') }}"
+            class="query-dashboard-btn">
+
+            Student Queries
+
+        </a>
+
+        <a
+            href="{{ url_for('student_login') }}"
+            class="student-login-btn">
+
+            Student Login
+
+        </a>
+    </div>
+
+
+    <!-- Certificate Section -->
+
+    <div class="section-header">
+
+        <div>
+            <h2>Created Certificates</h2>
+
+            <p>
+                Certificates issued by you
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Certificates -->
+
+    <div class="certificate-list">
+
+        {% if certificates %}
+
+            {% for certificate in certificates %}
+
+            <div class="certificate-card">
+
+                <div class="certificate-top">
+
+                    <div>
+
+                        <span class="certificate-label">
+                            Certificate ID
+                        </span>
+
+                        <h3>
+                            {{ certificate.certificate_id }}
+                        </h3>
+
+                    </div>
+
+                    <span class="status">
+                        {{ certificate.status }}
+                    </span>
+
+                </div>
+
+
+                <div class="certificate-info">
+
+                    <p>
+                        <strong>Student:</strong>
+                        {{ certificate.student_name }}
+                    </p>
+
+                    <p>
+                        <strong>Achievement:</strong>
+                        {{ certificate.achievement }}
+                    </p>
+
+                    <p>
+                        <strong>Competition:</strong>
+                        {{ certificate.competition_name }}
+                    </p>
+
+                    <p>
+                        <strong>Issue Date:</strong>
+                        {{ certificate.issue_date }}
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for(
+                        'certificate',
+                        certificate_id=certificate.certificate_id
+                    ) }}"
+                    class="view-btn">
+
+                    View Certificate
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <h3>No certificates created yet</h3>
+
+                <p>
+                    Click "Create Certificate" to issue
+                    your first certificate.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

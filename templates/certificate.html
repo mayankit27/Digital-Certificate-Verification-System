@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="certificate-page">
+
+    <div class="certificate">
+
+        <p class="certificate-type">
+            CERTIFICATE OF ACHIEVEMENT
+        </p>
+
+
+        <h1>
+            Certificate of Achievement
+        </h1>
+
+
+        <p class="presented">
+            This certificate is proudly presented to
+        </p>
+
+
+        <h2 class="student-name">
+            {{ certificate.student_name }}
+        </h2>
+
+
+        <p>
+            for achieving
+        </p>
+
+
+        <h3>
+            {{ certificate.achievement }}
+        </h3>
+
+
+        <p>
+            in
+        </p>
+
+
+        <h3>
+            {{ certificate.competition_name }}
+        </h3>
+
+
+        <div class="certificate-details">
+
+            <p>
+                <strong>Certificate ID:</strong>
+                {{ certificate.certificate_id }}
+            </p>
+
+            <p>
+                <strong>Institute:</strong>
+                {{ certificate.institute_name }}
+            </p>
+
+            <p>
+                <strong>Issued By:</strong>
+                {{ certificate.issuer_name }}
+            </p>
+
+            <p>
+                <strong>Issuer Email:</strong>
+                {{ certificate.issuer_email }}
+            </p>
+
+            <p>
+                <strong>Issue Date:</strong>
+                {{ certificate.issue_date }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                {{ certificate.status }}
+            </p>
+
+        </div>
+
+
+        <div class="certificate-footer">
+
+            <div>
+                Issuer
+            </div>
+
+            <div>
+                {{ certificate.institute_name }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a href="{{ url_for('issuer_dashboard') }}"
+       class="back-dashboard">
+
+        ← Back to Dashboard
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

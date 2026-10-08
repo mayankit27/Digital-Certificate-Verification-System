@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Raise Query</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <a
+        href="{{ url_for(
+            'student_dashboard'
+        ) }}"
+        class="back-btn">
+
+        ← Back to My Certificates
+
+    </a>
+
+
+    <div class="query-card">
+
+        <div class="query-header">
+
+            <h1>Raise a Query</h1>
+
+            <p>
+                Report an issue with this certificate.
+            </p>
+
+        </div>
+
+
+        <!-- Error -->
+
+        {% if error %}
+
+        <div class="login-error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Certificate Information -->
+
+        <div class="query-certificate-info">
+
+            <p>
+
+                <strong>Certificate ID:</strong>
+
+                {{ certificate.certificate_id }}
+
+            </p>
+
+
+            <p>
+
+                <strong>Student:</strong>
+
+                {{ certificate.student_name }}
+
+            </p>
+
+
+            <p>
+
+                <strong>Achievement:</strong>
+
+                {{ certificate.achievement }}
+
+            </p>
+
+
+            <p>
+
+                <strong>Competition:</strong>
+
+                {{ certificate.competition_name }}
+
+            </p>
+
+
+            <p>
+
+                <strong>Issued By:</strong>
+
+                {{ certificate.issuer_name }}
+
+            </p>
+
+        </div>
+
+
+        <!-- Query Form -->
+
+        <form method="POST">
+
+            <label for="query_text">
+
+                Describe the issue
+
+            </label>
+
+
+            <textarea
+                id="query_text"
+                name="query_text"
+                rows="7"
+                placeholder="Example: My name is incorrect on the certificate..."
+                required></textarea>
+
+
+            <button
+                type="submit"
+                class="submit-query-btn">
+
+                Submit Query
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
